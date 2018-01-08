@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizeDemo", "ImageResizeDemo\ImageResizeDemo.csproj", "{193E7095-6D0A-4C7C-8CF8-94D60B7FDB4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResize.Domain", "ImageResize.Domain\ImageResize.Domain.csproj", "{75D8D4EA-1194-411B-A9E9-8054A4AA946E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResize.Service", "ImageResize.Service\ImageResize.Service.csproj", "{AAADA010-70C1-4001-82C3-06F236890458}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{193E7095-6D0A-4C7C-8CF8-94D60B7FDB4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{193E7095-6D0A-4C7C-8CF8-94D60B7FDB4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{193E7095-6D0A-4C7C-8CF8-94D60B7FDB4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D8D4EA-1194-411B-A9E9-8054A4AA946E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D8D4EA-1194-411B-A9E9-8054A4AA946E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D8D4EA-1194-411B-A9E9-8054A4AA946E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D8D4EA-1194-411B-A9E9-8054A4AA946E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAADA010-70C1-4001-82C3-06F236890458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAADA010-70C1-4001-82C3-06F236890458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAADA010-70C1-4001-82C3-06F236890458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAADA010-70C1-4001-82C3-06F236890458}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
