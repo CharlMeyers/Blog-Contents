@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-//using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Practices.Unity;
-using Unity.Extension;
-using Unity.Lifetime;
+﻿using Microsoft.Practices.Unity;
 
 namespace ImageResize.Service
 {
@@ -14,7 +6,7 @@ namespace ImageResize.Service
     {
         protected override void Initialize()
         {
-            Container.RegisterType<IClientBrowserInfoService>(new HierarchicalLifetimeManager());            
+            Container.RegisterType<IClientBrowserInfoService, ClientBrowserInfoService>(new HierarchicalLifetimeManager());            
         }
     }
 }
