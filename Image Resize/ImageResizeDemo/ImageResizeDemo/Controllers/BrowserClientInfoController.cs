@@ -1,4 +1,5 @@
 ﻿using ImageResizeDemo.Models;
+using ImageResizeDemo.Mappers;
 using System.Web.Http;
 using Microsoft.Practices.Unity;
 using ImageResize.Service;
@@ -9,21 +10,17 @@ namespace ImageResizeDemo.Controllers
     public class BrowserClientInfoController : ApiController
     {
         [Dependency]
-        public IClientBrowserInfoService ClientBrowserInfoService { get; set; }
-
-        [HttpGet]
-        [Route("Test")]
-        public IHttpActionResult Test()
-        {
-            var result = ClientBrowserInfoService.Get();
-
-            return Ok(result);
-        }
+        public IClientBrowserInfoService ClientBrowserInfoService { get; set; }        
 
         [HttpPost]
-        public IHttpActionResult SetBrowserClientInfo(BrowserClientInfoDTO clientBrowserInfo)
+        [Route("SetBrowserClientInfo")]
+        public IHttpActionResult SetBrowserClientInfo(BrowserClientInfoDTO clientBrowserInfoDTO)
         {
-            return Ok();
+            var clientBrowserInfo = BrowserClientInfoDTOMapper.MapToDomain(clientBrowserInfoDTO);
+
+            ClientBrowserInfoService.Create(clientBrowserInfo);
+
+            return Ok(clientBrowserInfo.BrowserClientID);
         }
     }
 }

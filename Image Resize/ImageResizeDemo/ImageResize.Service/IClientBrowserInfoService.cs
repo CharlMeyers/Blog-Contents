@@ -1,7 +1,10 @@
-﻿namespace ImageResize.Service
+﻿using ImageResize.Domain;
+using System;
+
+namespace ImageResize.Service
 {
     public interface IClientBrowserInfoService
     {
-        int Get();
+        void Create(ClientBrowserInfo clientBrowserInfo);
     }
 }

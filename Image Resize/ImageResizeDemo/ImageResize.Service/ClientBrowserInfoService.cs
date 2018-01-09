@@ -1,12 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using ImageResize.Domain;
 
 namespace ImageResize.Service
 {
     public class ClientBrowserInfoService : IClientBrowserInfoService
     {
-        public int Get()
+        private List<ClientBrowserInfo> ClientBrowserInfoList;
+
+        public ClientBrowserInfoService()
         {
-            return 1;
+            ClientBrowserInfoList = new List<ClientBrowserInfo>();
         }
+
+        public void Create(ClientBrowserInfo clientBrowserInfo)
+        {
+            ClientBrowserInfoList.Add(clientBrowserInfo);
+        }        
     }
 }
