@@ -3,6 +3,7 @@ using ImageResizeDemo.Mappers;
 using System.Web.Http;
 using Microsoft.Practices.Unity;
 using ImageResize.Service;
+using System;
 
 namespace ImageResizeDemo.Controllers
 {
@@ -21,6 +22,15 @@ namespace ImageResizeDemo.Controllers
             ClientBrowserInfoService.Create(clientBrowserInfo);
 
             return Ok(clientBrowserInfo.BrowserClientID);
+        }
+
+        [HttpGet]
+        [Route("GetUserAgentString")]
+        public IHttpActionResult GetUserAgentString(Guid clientBrowserInfoId)
+        {
+            var clientBrowserInfo = ClientBrowserInfoService.GetById(clientBrowserInfoId);
+
+            return Ok(clientBrowserInfo.UserAgentString);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using ImageResize.Data;
+using Microsoft.Practices.Unity;
 
 namespace ImageResize.Service
 {
@@ -6,6 +7,7 @@ namespace ImageResize.Service
     {
         protected override void Initialize()
         {
+            Container.AddExtension(new DataUnityContainerExtention());
             Container.RegisterType<IClientBrowserInfoService, ClientBrowserInfoService>(new HierarchicalLifetimeManager());            
         }
     }
