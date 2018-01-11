@@ -9,27 +9,29 @@ namespace ImageResize.Data
     public class ClientBrowserInfoRepository : IClientBrowserInfoRepository
     {
         private List<ClientBrowserInfo> ClientBrowserInfoList;
-
-        public ClientBrowserInfoRepository()
-        {
-            ClientBrowserInfoList = new List<ClientBrowserInfo>();
-        }
+        private string DataStorePath = AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "/ClientBrowserInfo.json";        
 
         public void Add(ClientBrowserInfo clientBrowserInfo)
         {
-            string json = File.ReadAllText(AppDomain.CurrentDomain.GetData("DataDirectory").ToString() + "/ClientBrowserInfo.json");
+            string json = File.ReadAllText(DataStorePath);
             ClientBrowserInfoList = JsonConvert.DeserializeObject<List<ClientBrowserInfo>>(json);
-            throw new NotImplementedException();
+
+            ClientBrowserInfoList.Add(clientBrowserInfo);            
         }
 
         public ClientBrowserInfo GetById(Guid id)
         {
-            throw new NotImplementedException();
+            string json = File.ReadAllText(DataStorePath);
+            ClientBrowserInfoList = JsonConvert.DeserializeObject<List<ClientBrowserInfo>>(json);
+
+            ClientBrowserInfo clientBrowserInfo = ClientBrowserInfoList.Find(x => x.BrowserClientID == id);
+            return clientBrowserInfo;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            string jsonToSave = JsonConvert.SerializeObject(ClientBrowserInfoList);
+            File.WriteAllText(DataStorePath, jsonToSave);
         }
     }
 }

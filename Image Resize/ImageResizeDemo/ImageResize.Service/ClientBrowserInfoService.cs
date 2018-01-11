@@ -9,18 +9,17 @@ namespace ImageResize.Service
     public class ClientBrowserInfoService : IClientBrowserInfoService
     {
         [Dependency]
-        public IClientBrowserInfoRepository ClientBrowserInfoRepository  { get; set; }        
+        public IClientBrowserInfoRepository ClientBrowserInfoRepository  { get; set; }
 
         public void Create(ClientBrowserInfo clientBrowserInfo)
         {
             ClientBrowserInfoRepository.Add(clientBrowserInfo);
+            ClientBrowserInfoRepository.Save();
         }
 
         public ClientBrowserInfo GetById(Guid id)
         {
-            //var clientBrowerInfo = ClientBrowserInfoList.Find(x => x.BrowserClientID == id);
-
-            return null;
+            return ClientBrowserInfoRepository.GetById(id);            
         }
     }
 }
