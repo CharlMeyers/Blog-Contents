@@ -4,6 +4,8 @@ using System.Web.Http;
 using Microsoft.Practices.Unity;
 using ImageResize.Service;
 using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace ImageResizeDemo.Controllers
 {
@@ -15,13 +17,19 @@ namespace ImageResizeDemo.Controllers
 
         [HttpPost]
         [Route("SetBrowserClientInfo")]
-        public IHttpActionResult SetBrowserClientInfo(BrowserClientInfoDTO clientBrowserInfoDTO)
+        public HttpResponseMessage SetBrowserClientInfo(BrowserClientInfoDTO clientBrowserInfoDTO)
         {
+            var response = new HttpResponseMessage();
             var clientBrowserInfo = BrowserClientInfoDTOMapper.MapToDomain(clientBrowserInfoDTO);
 
             ClientBrowserInfoService.Create(clientBrowserInfo);
 
-            return Ok(clientBrowserInfo.BrowserClientID);
+            var cookie = new CookieHeaderValue("ClientBrowserInfoId", clientBrowserInfo.BrowserClientID.ToString());
+            cookie.Domain = Request.RequestUri.Host;
+            cookie.Path = "/";
+
+            response.Headers.AddCookies(new CookieHeaderValue[] { cookie });
+            return response;
         }
 
         [HttpGet]
