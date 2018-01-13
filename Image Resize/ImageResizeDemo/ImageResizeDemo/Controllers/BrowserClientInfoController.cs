@@ -6,6 +6,7 @@ using ImageResize.Service;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Linq;
 
 namespace ImageResizeDemo.Controllers
 {
@@ -34,11 +35,21 @@ namespace ImageResizeDemo.Controllers
 
         [HttpGet]
         [Route("GetUserAgentString")]
-        public IHttpActionResult GetUserAgentString(Guid clientBrowserInfoId)
+        public IHttpActionResult GetUserAgentString()
         {
-            var clientBrowserInfo = ClientBrowserInfoService.GetById(clientBrowserInfoId);
+            CookieHeaderValue cookie = Request.Headers.GetCookies("ClientBrowserInfoId").FirstOrDefault();
 
-            return Ok(clientBrowserInfo.UserAgentString);
+            if (cookie != null)
+            {
+                Guid clientBrowserInfoId = Guid.Parse(cookie["ClientBrowserInfoId"].Value);
+                var clientBrowserInfo = ClientBrowserInfoService.GetById(clientBrowserInfoId);
+                return Ok(clientBrowserInfo.UserAgentString);
+            }
+            else
+            {
+
+                return Ok("Cookie not set");
+            }
         }
     }
 }
