@@ -18,6 +18,12 @@ namespace ImageResizeDemo
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "BrowserCheck", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "image",
+                url: "{controller}/{id}",
+                defaults: new { controller = "Image", id = UrlParameter.Optional }
+            );
         }
     }
 }
