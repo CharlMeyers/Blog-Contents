@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace ImageResizeDemo.Controllers
 {
@@ -11,9 +6,10 @@ namespace ImageResizeDemo.Controllers
     public class ImageController : ApiController
     {
         [HttpGet]
+        [Route("{imageName}")]
         public IHttpActionResult GetImage(string imageName)
         {
-            return BadRequest("Not implemented");
+            return BadRequest("Not implemented, image name: " + imageName);
         }
     }
 }

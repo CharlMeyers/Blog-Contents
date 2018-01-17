@@ -190,6 +190,7 @@
     <Compile Include="Controllers\BrowserCheckController.cs" />
     <Compile Include="Controllers\BrowserClientInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
