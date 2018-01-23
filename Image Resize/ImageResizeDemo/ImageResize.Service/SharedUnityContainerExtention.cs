@@ -8,7 +8,8 @@ namespace ImageResize.Service
         protected override void Initialize()
         {
             Container.AddExtension(new DataUnityContainerExtention());
-            Container.RegisterType<IClientBrowserInfoService, ClientBrowserInfoService>(new HierarchicalLifetimeManager());            
+            Container.RegisterType<IClientBrowserInfoService, ClientBrowserInfoService>(new HierarchicalLifetimeManager());
+            Container.RegisterType<IImageService, ImageService>(new HierarchicalLifetimeManager());
         }
     }
 }
