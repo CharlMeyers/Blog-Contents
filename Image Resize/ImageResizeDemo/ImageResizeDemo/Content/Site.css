@@ -1,7 +1,6 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
-    background-image: url("/api/image/507d2a6f2f57fce7c4bd9265d9ca7f5c.jpg")
+    padding-bottom: 20px;    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -27,4 +26,10 @@ textarea {
 #checking {
     top: 0px;
     bottom: 0px;
+}
+
+
+a {
+    color: black;
+    text-decoration: underline;
 }

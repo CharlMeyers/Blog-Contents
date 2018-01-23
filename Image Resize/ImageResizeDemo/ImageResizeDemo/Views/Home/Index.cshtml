@@ -2,12 +2,14 @@
     ViewBag.Title = "Home Page";
 }
 
-@Styles.Render("~/Content/css")
+<style>
+    body {
+        background-image: url("/api/image/507d2a6f2f57fce7c4bd9265d9ca7f5c.jpg");
+    }
+</style>
 
-<div>
-    <p>Screen height: <span id="height"></span></p>
-    <p>Screen width: <span id="width"></span></p>
-
-    <p id="test"></p>
+<div>    
+    
+    <h1><a href="/profile">Go to profile page</a></h1>
 </div>
 
