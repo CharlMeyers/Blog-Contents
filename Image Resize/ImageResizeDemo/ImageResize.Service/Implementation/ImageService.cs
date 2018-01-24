@@ -24,15 +24,25 @@ namespace ImageResize.Service
 
         public string GetProfilePicture(Guid userId, int imageHeight, int imageWidth)
         {
-            throw new NotImplementedException();
+            string imageBytes;
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "Content\\Images\\" + userId.ToString() + ".jpg";
+
+            using (Image image = Image.FromFile(filePath))
+            {
+                Size size = new Size(imageWidth, imageHeight);
+                Bitmap imageBitmap = new Bitmap(image, size);
+                imageBytes = ConvertImageToBase64(imageBitmap, image.RawFormat);
+            }
+
+            return imageBytes;
         }
 
-        private string ConvertImageToBase64(Bitmap image)
+        private string ConvertImageToBase64(Bitmap image, ImageFormat imageFormat)
         {
             string base64 = "";
             using (MemoryStream ms = new MemoryStream())
             {
-                image.Save(ms, image.RawFormat);
+                image.Save(ms, imageFormat);
                 byte[] imageBytes = ms.ToArray();
 
                 base64 = Convert.ToBase64String(imageBytes);

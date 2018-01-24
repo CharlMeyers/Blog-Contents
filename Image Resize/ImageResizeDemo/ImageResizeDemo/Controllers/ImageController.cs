@@ -1,7 +1,6 @@
 ﻿using ImageResize.Service;
 using Microsoft.Practices.Unity;
 using System;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -34,6 +33,15 @@ namespace ImageResizeDemo.Controllers
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpg");
 
             return response;
+        }
+
+        [HttpGet]
+        [Route("GetProfilePicture")]
+        public IHttpActionResult GetProfilePicture(Guid id)
+        {
+            string imageBase64String = ImageService.GetProfilePicture(id, 100, 100);
+
+            return Ok(imageBase64String);
         }
     }
 }
