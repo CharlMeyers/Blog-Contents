@@ -30,16 +30,28 @@ namespace ImageResizeDemo.Controllers
             byte[] image = ImageService.GetImageByName(imageName, clientBrowserInfo.DisplayResolutionHeight, clientBrowserInfo.DisplayResolutionWidth);
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Content = new ByteArrayContent(image);
-            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpg");
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
+
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetImage")]
+        public HttpResponseMessage GetImage(Guid id)
+        {
+            byte[] image = ImageService.GetImage(id);
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new ByteArrayContent(image);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
 
             return response;
         }
 
         [HttpGet]
         [Route("GetProfilePicture")]
-        public IHttpActionResult GetProfilePicture(Guid id)
+        public IHttpActionResult GetProfilePicture(Guid id, int height, int width)
         {
-            string imageBase64String = ImageService.GetProfilePicture(id, 100, 100);
+            string imageBase64String = ImageService.GetProfilePicture(id, height, width);
 
             return Ok(imageBase64String);
         }

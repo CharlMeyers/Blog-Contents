@@ -22,6 +22,19 @@ namespace ImageResize.Service
             return imageBytes;
         }
 
+        public byte[] GetImage(Guid userId)
+        {
+            byte[] imageBytes;
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "Content\\Images\\" + userId.ToString() + ".jpg";
+
+            using (Image image = Image.FromFile(filePath))
+            {                
+                imageBytes = ConvertImageToByteArray(image, image.RawFormat);
+            }
+
+            return imageBytes;
+        }
+
         public string GetProfilePicture(Guid userId, int imageHeight, int imageWidth)
         {
             string imageBytes;
@@ -37,7 +50,7 @@ namespace ImageResize.Service
             return imageBytes;
         }
 
-        private string ConvertImageToBase64(Bitmap image, ImageFormat imageFormat)
+        private string ConvertImageToBase64(Image image, ImageFormat imageFormat)
         {
             string base64 = "";
             using (MemoryStream ms = new MemoryStream())
@@ -51,7 +64,7 @@ namespace ImageResize.Service
             return base64;
         }
 
-        private byte[] ConvertImageToByteArray(Bitmap image, ImageFormat imageFormat)
+        private byte[] ConvertImageToByteArray(Image image, ImageFormat imageFormat)
         {
             byte[] imageBytes;
             using (MemoryStream ms = new MemoryStream())

@@ -4,7 +4,18 @@
 }
 
 <h2>John Doe</h2>
+<p>Right click >> open image in new tab. This will confirm that the image is resized</p>
 
-<img class="img-circle" id="profilePic" height="100" width="100"/>
+<div style="display: inline-block;">
+    <h3>The resized examples</h3>
+    <img class="img-circle dynamicSize" id="profilePicSm" style="height:100px; width:100px" />
 
+    <img class="img-circle dynamicSize" id="profilePicMd" style="height:250px; width:250px" />
+
+    <img class="img-circle dynamicSize" id="profilePicLg" style="height:500px; width:500px" />
+</div>
+<div style="display: inline-block; margin-left: 20px;">
+    <h3>The unsized image</h3>
+    <img class="img-circle" src="api/image/GetImage/?id=20e49fb4-597d-4db0-b45a-781875ea35d9" />
+</div>
 <script src="~/App/profile.js"></script>

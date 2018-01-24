@@ -6,5 +6,6 @@ namespace ImageResize.Service
     {
         byte[] GetImageByName(string imageName, int imageHeight, int imageWidth);
         string GetProfilePicture(Guid userId, int imageHeight, int imageWidth);
+        byte[] GetImage(Guid userId);
     }
 }

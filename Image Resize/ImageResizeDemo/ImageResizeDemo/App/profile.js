@@ -1,8 +1,11 @@
 ﻿$(document).ready(function () {
-    var imageHeight = $("#profilePic").css("height");
-    var imageWidth = $("#profilePic").css("width");
+    $("img.dynamicSize").each(function () {
+        var self = this;
+        var imageHeight = $(self).css("height").replace("px", "");
+        var imageWidth = $(self).css("width").replace("px", "");
 
-    $.get("api/image/GetProfilePicture/", { id: '20e49fb4-597d-4db0-b45a-781875ea35d9' }, function (data) {
-        $("profilePic").attr("src", data);
-    })
+        $.get("api/image/GetProfilePicture/", { id: '20e49fb4-597d-4db0-b45a-781875ea35d9', height: imageHeight, width: imageWidth }, function (data) {
+            $(self).attr("src", "data:image/jpg;base64," + data);
+        })
+    });
 });
