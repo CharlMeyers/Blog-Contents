@@ -35,16 +35,16 @@ namespace ImageResize.Service
             return imageBytes;
         }
 
-        public string GetProfilePicture(Guid userId, int imageHeight, int imageWidth)
+        public byte[] GetProfilePicture(Guid userId, int imageHeight, int imageWidth)
         {
-            string imageBytes;
+            byte[] imageBytes;
             string filePath = AppDomain.CurrentDomain.BaseDirectory + "Content\\Images\\" + userId.ToString() + ".jpg";
 
             using (Image image = Image.FromFile(filePath))
             {
                 Size size = new Size(imageWidth, imageHeight);
                 Bitmap imageBitmap = new Bitmap(image, size);
-                imageBytes = ConvertImageToBase64(imageBitmap, image.RawFormat);
+                imageBytes = ConvertImageToByteArray(imageBitmap, image.RawFormat);
             }
 
             return imageBytes;

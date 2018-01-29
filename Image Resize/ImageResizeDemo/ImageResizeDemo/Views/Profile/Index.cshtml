@@ -12,10 +12,13 @@
 
     <img class="img-circle dynamicSize" id="profilePicMd" style="height:250px; width:250px" />
 
-    <img class="img-circle dynamicSize" id="profilePicLg" style="height:500px; width:500px" />
 </div>
 <div style="display: inline-block; margin-left: 20px;">
     <h3>The unsized image</h3>
     <img class="img-circle" src="api/image/GetImage/?id=20e49fb4-597d-4db0-b45a-781875ea35d9" />
+</div>
+<div>
+    <h4>Replace 'profile' in the url above with the string below; Where '_y_' is the desired resolution in height and '_x_' the desired resolution in width</h4>
+    <p>api/image/GetProfilePicture/?id=20e49fb4-597d-4db0-b45a-781875ea35d9&height=_y_&width=_x_</p>
 </div>
 <script src="~/App/profile.js"></script>

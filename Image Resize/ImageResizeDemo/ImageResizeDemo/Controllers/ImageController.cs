@@ -49,11 +49,24 @@ namespace ImageResizeDemo.Controllers
 
         [HttpGet]
         [Route("GetProfilePicture")]
-        public IHttpActionResult GetProfilePicture(Guid id, int height, int width)
+        public HttpResponseMessage GetProfilePicture(Guid id, int height, int width)
         {
-            string imageBase64String = ImageService.GetProfilePicture(id, height, width);
+            byte[] image = ImageService.GetProfilePicture(id, height, width);
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new ByteArrayContent(image);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
 
-            return Ok(imageBase64String);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetProfilePictureBase64")]
+        public IHttpActionResult GetProfilePictureBase64(Guid id, int height, int width)
+        {
+            byte[] image = ImageService.GetProfilePicture(id, height, width);
+            string base64String = Convert.ToBase64String(image);            
+
+            return Ok(base64String);
         }
     }
 }
