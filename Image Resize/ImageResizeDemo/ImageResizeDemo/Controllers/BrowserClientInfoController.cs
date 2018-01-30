@@ -7,6 +7,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Linq;
+using System.Collections.Specialized;
 
 namespace ImageResizeDemo.Controllers
 {
@@ -21,11 +22,12 @@ namespace ImageResizeDemo.Controllers
         public HttpResponseMessage SetBrowserClientInfo(BrowserClientInfoDTO clientBrowserInfoDTO)
         {
             var response = new HttpResponseMessage();
-            var clientBrowserInfo = BrowserClientInfoDTOMapper.MapToDomain(clientBrowserInfoDTO);
 
-            ClientBrowserInfoService.Create(clientBrowserInfo);
+            var displayResolution = new NameValueCollection();
+            displayResolution["DisplayResolutionHeight"] = clientBrowserInfoDTO.DisplayResolutionHeight.ToString();
+            displayResolution["DisplayResolutionWidth"] = clientBrowserInfoDTO.DisplayResolutionWidth.ToString();            
 
-            var cookie = new CookieHeaderValue("ClientBrowserInfoId", clientBrowserInfo.BrowserClientID.ToString());
+            var cookie = new CookieHeaderValue("DisplayResolution", displayResolution);
             cookie.Domain = Request.RequestUri.Host;
             cookie.Path = "/";
 

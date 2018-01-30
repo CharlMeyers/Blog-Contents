@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {    
     var BrowserClientInfo = {};
-    BrowserClientInfo["UserAgentString"] = navigator.userAgent;
     BrowserClientInfo["DisplayResolutionHeight"] = window.innerHeight;
     BrowserClientInfo["DisplayResolutionWidth"] = window.innerWidth;    
 

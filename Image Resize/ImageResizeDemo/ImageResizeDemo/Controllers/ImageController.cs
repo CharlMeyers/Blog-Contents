@@ -22,12 +22,13 @@ namespace ImageResizeDemo.Controllers
         [Route("{imageName}")]
         public HttpResponseMessage GetImage(string imageName)
         {
-            CookieHeaderValue cookie = Request.Headers.GetCookies("ClientBrowserInfoId").FirstOrDefault();
+            CookieHeaderValue cookie = Request.Headers.GetCookies("DisplayResolution").FirstOrDefault();
+            CookieState cookieState = cookie["DisplayResolution"];
 
-            Guid clientBrowserInfoId = Guid.Parse(cookie["ClientBrowserInfoId"].Value);
-            var clientBrowserInfo = ClientBrowserInfoService.GetById(clientBrowserInfoId);
+            int resolutionHeight = Convert.ToInt32(cookieState["DisplayResolutionHeight"]);
+            int resolutionWidth = Convert.ToInt32(cookieState["DisplayResolutionWidth"]);
 
-            byte[] image = ImageService.GetImageByName(imageName, clientBrowserInfo.DisplayResolutionHeight, clientBrowserInfo.DisplayResolutionWidth);
+            byte[] image = ImageService.GetImageByName(imageName, resolutionHeight, resolutionWidth);
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Content = new ByteArrayContent(image);
             response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
