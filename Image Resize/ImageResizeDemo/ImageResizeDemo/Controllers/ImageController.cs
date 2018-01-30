@@ -15,9 +15,6 @@ namespace ImageResizeDemo.Controllers
         [Dependency]
         public IImageService ImageService { get; set; }
 
-        [Dependency]
-        public IClientBrowserInfoService ClientBrowserInfoService { get; set; }
-
         [HttpGet]
         [Route("{imageName}")]
         public HttpResponseMessage GetImage(string imageName)

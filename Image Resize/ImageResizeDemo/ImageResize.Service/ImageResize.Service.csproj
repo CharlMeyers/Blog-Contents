@@ -56,22 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementation\ClientBrowserInfoService.cs" />
     <Compile Include="Implementation\ImageService.cs" />
-    <Compile Include="Interface\IClientBrowserInfoService.cs" />
     <Compile Include="Interface\IImageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedUnityContainerExtention.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ImageResize.Data\ImageResize.Data.csproj">
-      <Project>{B2235A4B-C12B-470A-89EF-452094A2B492}</Project>
-      <Name>ImageResize.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImageResize.Domain\ImageResize.Domain.csproj">
-      <Project>{75d8d4ea-1194-411b-a9e9-8054a4aa946e}</Project>
-      <Name>ImageResize.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
